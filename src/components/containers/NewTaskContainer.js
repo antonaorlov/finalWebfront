@@ -39,7 +39,7 @@ class NewTaskContainer extends Component {
           timeslot: this.state.timeslot,
           location: this.state.location,
           instructorId: this.state.instructorId,
-          description: this.state.description // Add this line
+           description: this.state.description // Add this line
       };
       try {
         let newTask = await this.props.addTask(task);
