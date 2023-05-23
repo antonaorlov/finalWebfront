@@ -3,17 +3,17 @@ import { Employer } from "../../store/reducers";
 
 
 const EmployerView = (props) => {
-  const {employers, editTask, allTasks} = props;
- // let assignedTasks = allTasks.filter(task => task.employerId===employer.id);
- // let availableTasks = allTasks.filter(task => task.employerId!==employer.id);
+  const {employee, editTask, allTasks} = props;
+  let assignedTasks = allTasks.filter(task => task.employeeId===employee.id);
+  let availableTasks = allTasks.filter(task => task.employeeId!==employee.id);
  console.log(employers);
   return (
     <div>      
       <h1>Hi</h1>
      
-       {/* <h1>{employers.department}</h1>
-      <h3>{employers}</h3>  */}
-      {/* <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
+        <h1>{employee.firstname}</h1>
+      <h3>{employee.department}</h3> 
+       <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
         <div>Assigned tasks:
         {assignedTasks.map( task => {
           return (
@@ -37,7 +37,7 @@ const EmployerView = (props) => {
           );
         })}</div>
 
-      </div> */}
+      </div> 
 
   
     </div>
