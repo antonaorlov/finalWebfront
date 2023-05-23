@@ -9,7 +9,7 @@ const AllTasksView = (props) => {
     <div>
       <p>There are no Tasks.</p>
       <Link to={`/newtask`}>
-        <button>Add New Task</button>
+        <button className="">Add New Task</button>
       </Link>
     </div>
     );
