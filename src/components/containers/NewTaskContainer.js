@@ -38,7 +38,7 @@ class NewTaskContainer extends Component {
           title: this.state.title,
           timeslot: this.state.timeslot,
           location: this.state.location,
-          instructorId: this.state.instructorId,
+          epmloyerId: this.state.employerId,
            description: this.state.description // Add this line
       };
       try {

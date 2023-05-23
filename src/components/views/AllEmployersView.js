@@ -12,7 +12,7 @@ const AllEmployersView = (props) => {
         let name = employer.firstname + " " + employer.lastname;
         return (
           <div key={employer.id}>
-          <Link to={`/employer/${employer.id}`}>
+          <Link to={`/Employees/${employer.id}`}>
             <h1>{name}</h1>
           </Link>
           <p>{employer.department}</p>

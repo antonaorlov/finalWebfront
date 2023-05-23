@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllEmployersThunk } from "../../store/thunks";
 import { AllEmployersView } from "../views";
 
+
 function AllEmployersContainer() {
   const allEmployers = useSelector((state) => state.allEmployers);
   const dispatch = useDispatch();
@@ -14,5 +15,6 @@ function AllEmployersContainer() {
 
   return <AllEmployersView allEmployers={allEmployers} />;
 }
+
 
 export default AllEmployersContainer;
