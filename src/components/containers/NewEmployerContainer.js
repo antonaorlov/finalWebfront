@@ -1,80 +1,81 @@
-// import { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
+import { Component } from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import NewEmployeeView from "../views/NewEmployeeView";
+import { addEmployeeThunk } from "../../store/thunks";
 
-// import NewEmployerView from '../views/NewEmployerView';
-// import { addEmployerThunk } from '../../store/thunks';
+class NewEmployeeContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstname: "",
+      lastname: "",
+      department: "",
+      id: "",
+      redirect: false,
+      redirectId: null,
+      error: "",
+    };
+  }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
 
-// class NewEmployerContainer extends Component {
-//   constructor(props){
-//       super(props);
-//       this.state = {
-//         firstname: "", 
-//         lastname: "",
-//         department: "", 
-//         employerId: null, 
-//         Redirect: false, 
-//         RedirectId: null,
-//         error: ""
-//       };
-//   }
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    if (this.state.firstname === "") {
+      this.setState({ error: "First Name field is required" });
+      return;
+    }
+    if (this.state.lastname === "") {
+      this.setState({ error: "Last Name field is required" });
+      return;
+    }
+    if (this.state.id === "") {
+        this.setState({ error: "Id field is required" });
+        return;
+      }
+    let employee = {
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      department: this.state.department,
+      id: this.state.id
+    };
 
-//   handleChange = event => {
-//     this.setState({
-//       [event.target.name]: event.target.value
-//     });
-//   }
+    let newEmployee = await this.props.addEmployee(employee);
 
-//   handleSubmit = async event => {
-//       event.preventDefault();
-//       //dont need ID because the Employer has not been created yet
-//       if(this.state.firstname===""){
-//         this.setState({error:"Title field is required"});
-//         return;
-//       }
-//       let Employer = {
-//           firstname: this.state.firstname,
-//           lastname: this.state.lastname,
-//           department: this.state.department,
-//           employerId: this.state.employerId
-//       };
-      
-//       let newEmployer = await this.props.addEmployer(Employer);
+    this.setState({
+      redirect: true,
+      redirectId: newEmployee.id,
+      error: "",
+    });
+  };
 
-//       this.setState({
-//         Redirect: true, 
-//         RedirectId: newEmployer.id,
-//         error: ""
-//       });
-//   }
+  componentWillUnmount() {
+    this.setState({ redirect: false, redirectId: null });
+  }
 
-//   componentWillUnmount() {
-//       this.setState({ Redirect: false, RedirectId: null});
-//   }
+  render() {
+    if (this.state.redirect) {
+      return <Redirect to={`/employee/${this.state.redirectId}`} />;
+    }
+    return (
+      <NewEmployeeView
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        error={this.state.error}
+      />
+    );
+  }
+}
 
-//   render() {
-//     //go to single Employer view of newly created Employer
-//       if(this.state.Redirect) {
-//         return (< Redirect to={`/Employer/${this.state.RedirectId}`}/>)
-//       }
-//       return (
-//         <NewEmployerView 
-//           handleChange={this.handleChange} 
-//           handleSubmit={this.handleSubmit}
-//           error={this.state.error}      
-//         />
-//       );
-//   }
-// }
+const mapDispatch = (dispatch) => {
+  return {
+    addEmployee: (employee) => dispatch(addEmployeeThunk(employee)),
+  };
+};
 
-// const mapDispatch = (dispatch) => {
-//   return({
-//       addEmployer: (Employer) => dispatch(addEmployerThunk(Employer)),
-//   })
-// }
-
-// export default connect(null, mapDispatch)(NewEmployerContainer);
-
-
-
+export default connect(null, mapDispatch)(NewEmployeeContainer);

@@ -1,27 +1,24 @@
 import { Link } from "react-router-dom";
-import { Employer } from "../../store/reducers";
 
 
-const EmployerView = (props) => {
+const EmployeeView = (props) => {
   const {employee, editTask, allTasks} = props;
   let assignedTasks = allTasks.filter(task => task.employeeId===employee.id);
   let availableTasks = allTasks.filter(task => task.employeeId!==employee.id);
- console.log(employers);
+  
   return (
-    <div>      
-      <h1>Hi</h1>
-     
-        <h1>{employee.firstname}</h1>
-      <h3>{employee.department}</h3> 
-       <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
+    <div style={{backgroundColor:"#7A3E3E",color:"#EEEEEE",fontFamily:"courier",margin:0,padding:80}}>      
+      <h1>{employee.firstname}</h1>
+      <h3>{employee.department}</h3>
+      <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
         <div>Assigned tasks:
         {assignedTasks.map( task => {
           return (
             <div key={task.id}>
             <Link to={`/task/${task.id}`}>
-              <h4>{task.title}</h4>
+              <h4>{task.description}</h4>
             </Link>
-            <button onClick={() => editTask({id:task.id, employerId: null})}>x</button>
+            <button onClick={() => editTask({id:task.id, employeeId: null})}>x</button>
             </div>
           );
         })}</div>
@@ -30,14 +27,14 @@ const EmployerView = (props) => {
           return (
             <div key={task.id}>
             <Link to={`/task/${task.id}`}>
-              <h4>{task.title}</h4>
+              <h4>{task.description}</h4>
             </Link>
-            <button onClick={() => editTask({id:task.id, employerId: employer.id})}>+</button>
+            <button onClick={() => editTask({id:task.id, employeeId: employee.id})}>+</button>
             </div>
           );
         })}</div>
 
-      </div> 
+      </div>
 
   
     </div>
@@ -45,4 +42,4 @@ const EmployerView = (props) => {
 
 };
 
-export default EmployerView;
+export default EmployeeView;
