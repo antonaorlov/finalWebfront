@@ -19,8 +19,8 @@ const App = () => {
     <div className='App'>
       <Switch>
         <Route exact path="/" component={HomePageContainer}/>
-        <Route exact path="/employers" component={AllEmployersContainer}/>
-        <Route exact path="/employer/:id" component={EmployerContainer} />
+        <Route exact path="/employees" component={AllEmployersContainer}/>
+        <Route exact path="/Employees/:id" component={EmployerContainer} />
         <Route exact path="/tasks" component={AllTasksContainer} />
         <Route exact path="/newtask" component={NewTaskContainer} />
         <Route exact path="/task/:id" component={TaskContainer} />

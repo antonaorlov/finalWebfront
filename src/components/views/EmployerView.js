@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
+import { Employer } from "../../store/reducers";
+
 
 const EmployerView = (props) => {
-  const {employer, editTask, allTasks} = props;
-   // If employer or allTasks is not yet loaded, display a loading message
-   if (!employer || !allTasks) {
-    return <p>Loading...</p>;
-  }
-  let assignedTasks = allTasks.filter(task => task.employerId===employer.id);
-  let availableTasks = allTasks.filter(task => task.employerId!==employer.id);
-  
+  const {employers, editTask, allTasks} = props;
+ // let assignedTasks = allTasks.filter(task => task.employerId===employer.id);
+ // let availableTasks = allTasks.filter(task => task.employerId!==employer.id);
+ console.log(employers);
   return (
     <div>      
-      <h1>{employer.firstname}</h1>
-      <h3>{employer.department}</h3>
-      <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
+      <h1>Hi</h1>
+     
+       {/* <h1>{employers.department}</h1>
+      <h3>{employers}</h3>  */}
+      {/* <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
         <div>Assigned tasks:
         {assignedTasks.map( task => {
           return (
@@ -37,7 +37,7 @@ const EmployerView = (props) => {
           );
         })}</div>
 
-      </div>
+      </div> */}
 
   
     </div>
@@ -46,4 +46,3 @@ const EmployerView = (props) => {
 };
 
 export default EmployerView;
-

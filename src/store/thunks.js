@@ -43,7 +43,6 @@ export const addTaskThunk = (task) => async (dispatch) => {
     return res.data;
   } catch(err) {
     console.error(err);
-    throw err; // Propagate the error so it can be handled in handleSubmit
   }
 };
 

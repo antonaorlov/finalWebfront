@@ -1,33 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { 
-  fetchEmployerThunk,
-  fetchAllTasksThunk,
-  editTaskThunk 
-} from "../../store/thunks";
+import {  fetchEmployerThunk, editTaskThunk, fetchAllEmployersThunk} from "../../store/thunks";
 
 import { EmployerView } from "../views";
-class EmployerContainer extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-  }
-  async componentDidMount() {
-    //getting Employer ID from url
-    await this.props.fetchEmployer(this.props.match.params.id);
-    await this.props.fetchTasks();
-    this.setState({ loading: false });
+class EmployerContainer extends Component {
+  componentDidMount() {
+    //getting instructor ID from url
+    this.props.fetchEmployers(this.props.match.params.id);
+    this.props.fetchTask();
   }
 
   render() {
-    if (this.state.loading) {
-      return <div>Loading...</div>;
-    }
     return (
-      
       <EmployerView 
-        employer={this.props.employer}
+        employers={this.props.employer}
         editTask={this.props.editTask}
         allTasks={this.props.allTasks}
       />
@@ -47,9 +34,9 @@ const mapState = (state) => {
 // map dispatch to props
 const mapDispatch = (dispatch) => {
   return {
-    fetchEmployer: (id) => dispatch(fetchEmployerThunk(id)),
-    editTask: (Task) => dispatch(editTaskThunk(Task)),
-    fetchTasks: () => dispatch(fetchAllTasksThunk()),
+    fetchEmployers: (id) => dispatch(fetchEmployerThunk(id)),
+    editTask: (task) => dispatch(editTaskThunk(task)),
+    fetchTask: () => dispatch(fetchAllEmployersThunk()),
 
   };
 };
