@@ -164,14 +164,14 @@ class EditTaskContainer extends Component {
           { this.state.error !=="" && <p>{this.state.error}</p> }
 
           {task.employeeId !== null ?
-            <div> Current employee:  
+            <div className='element'> Current employee:  
             <Link to={`/employee/${task.employeeId}`}>{task.employee.firstname}</Link>
             <button onClick={async () => {await editTask({id:task.id, employeeId: null});  fetchTask(task.id)}}>Unassign</button>
             </div>
             : <div> No employee currently assigned </div>
           }
 
-          <div> Other employees
+          <div className='element'> Other employees
           {otherEmployees.map(employee => {
             return (
             <div key={employee.id}>
