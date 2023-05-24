@@ -5,33 +5,33 @@ import * as at from './actionTypes';
  * for each action type
  */
 
-// All employers
-export const fetchAllEmployers = (employers) => {
+// All employees
+export const fetchAllEmployees = (employees) => {
   return {
-    type: at.FETCH_ALL_EMPLOYERS,
-    payload: employers,
+    type: at.FETCH_ALL_EMPLOYEES,
+    payload: employees,
   };
 };
 
-//Single employer
-export const fetchEmployers = (employer) => {
+//Single employee
+export const fetchEmployee = (employee) => {
   return {
-    type: at.FETCH_EMPLOYER,
-    payload: employer,
+    type: at.FETCH_EMPLOYEE,
+    payload: employee,
   };
 };
 
-export const addEmployer = (employers) => {
+export const deleteEmployee = (employeeId) => {
   return {
-    type: at.ADD_EMPLOYER,
-    payload: employers,
+    type: at.DELETE_EMPLOYEE, 
+    payload: employeeId,
   };
 };
 
-export const deleteEmployer = (employerId) => {
+export const addEmployee = (employee) => {
   return {
-    type: at.DELETE_EMPLOYER,
-    payload: employerId,
+    type: at.ADD_EMPLOYEE,
+    payload: employee,
   };
 };
 
@@ -43,10 +43,10 @@ export const fetchAllTasks = (tasks) => {
   };
 };
 
-export const addTask = (tasks) => {
+export const addTask = (task) => {
   return {
     type: at.ADD_TASK,
-    payload: tasks,
+    payload: task,
   };
 };
 

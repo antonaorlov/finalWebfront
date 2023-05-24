@@ -1,4 +1,3 @@
-
 const NewTaskView = (props) => {
   const {handleChange, handleSubmit, error } = props;
 
@@ -6,23 +5,23 @@ const NewTaskView = (props) => {
     <div className="root">
       <div className="formContainer">
         <div className="formTitle">
-          <h2  className="h21" style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
+          <h2 style={{backgroundColor:"#47A992",color:"#482121",fontFamily:"courier",margin:0,padding:50}}>
             New Task
           </h2>
         </div>
-        <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
-          <label className="labels-1" style= {{color:'#11153e', fontWeight: 'bold'}}>Description </label>
-          <input className="input1" type="text" name="title" onChange ={(e) => handleChange(e)} />
+        <form style={{backgroundColor:"#47A992",color:"#482121",fontFamily:"courier",margin:0,padding:80}}>
+          <label style= {{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
+          <input type="text" name="description" onChange ={(e) => handleChange(e)} />
           <br/>
           <br/>
 
-          <label className="labels-1" style={{color:'#11153e', fontWeight: 'bold'}}>Priority </label>
-          <input className="input1" type="text" name="timeslot" onChange={(e) => handleChange(e)} />
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Priority Level: </label>
+          <input type="text" name="priority" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 
-          <label className="labels-1" style={{color:'#11153e', fontWeight: 'bold'}}>IsComplete </label>
-          <input className="input1" type="text" name="instructorId" onChange={(e) => handleChange(e)} />
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>employeeId: </label>
+          <input type="text" name="employeeId" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 
@@ -34,10 +33,10 @@ const NewTaskView = (props) => {
         </form>
         {error!=="" && <p>{error}</p>}
         </div>
+        <div style={{backgroundColor:"#47A992",color:"#482121",fontFamily:"courier",margin:0,padding:300}}></div>
       </div>
     
   )
 }
 
 export default NewTaskView;
-

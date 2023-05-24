@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 
 const TaskView = (props) => {
-  const { Task } = props;
+  const { task } = props;
   return (
-    <div>
-      <h1>{Task.desciption}</h1>
-      {Task.employer ? <h3>{Task.employer.firstname + " " + Task.employer.lastname}</h3>: <h3>Task</h3>}
-      <Link to={`/editTask/${Task.id}`}>Edit Task information</Link>
+    <div style={{backgroundColor:"#47A992",color:"#482121",fontFamily:"courier",margin:5,padding:50}}>
+      <h1>{task.description}</h1>
+      {task.employee ? <h3>{task.employee.firstname + " " + task.employee.lastname}</h3>: <h3>staff</h3>}
+      <Link to={`/edittask/${task.id}`}>Edit task information</Link>
       <br/>
-      <Link to={`/Tasks`}>View all Tasks</Link>
+      <Link to={`/tasks`}>View all tasks</Link>
+      <div>style={{backgroundColor:"#47A992",color:"#482121",fontFamily:"courier",margin:5,padding:400}}</div>
     </div>
   );
 
