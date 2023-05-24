@@ -1,31 +1,33 @@
 const NewTaskView = (props) => {
-  const {handleChange, handleSubmit, error } = props;
+  const {handleChange, error } = props;
 
   return (
     <div className="root">
       <div className="formContainer">
         <div className="formTitle">
-          <h2 style={{backgroundColor:"#47A992",color:"#482121",fontFamily:"courier",margin:0,padding:50}}>
+          <h2 className="element">
             New Task
           </h2>
         </div>
-        <form style={{backgroundColor:"#47A992",color:"#482121",fontFamily:"courier",margin:0,padding:80}}>
-          <label style= {{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
-          <input type="text" name="description" onChange ={(e) => handleChange(e)} />
+        <form>
+          <label className="element"> Description: </label>
+          <input className="input" type="text" name="description" onChange ={(e) => handleChange(e)} />
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>Priority Level: </label>
-          <input type="text" name="priority" onChange={(e) => handleChange(e)} />
+          <label className="element">Priority Level: </label>
+          <input  className="input" type="text" name="priority" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>employeeId: </label>
-          <input type="text" name="employeeId" onChange={(e) => handleChange(e)} />
+          <label className="element">employeeId: </label>
+          <input className="input" type="text" name="employeeId" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 
           <button type="submit">
+          <span class="transition"></span>
+            <span class="gradient"></span>
             Submit
           </button>
           <br/>
@@ -33,7 +35,7 @@ const NewTaskView = (props) => {
         </form>
         {error!=="" && <p>{error}</p>}
         </div>
-        <div style={{backgroundColor:"#47A992",color:"#482121",fontFamily:"courier",margin:0,padding:300}}></div>
+        <div></div>
       </div>
     
   )

@@ -127,19 +127,19 @@ class EditTaskContainer extends Component {
         return (
         <div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => this.handleSubmit(e)}>
-            <label style= {{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
+            <label>Description: </label>
             <input type="text" name="description" value={this.state.description || ''} placeholder={task.description} onChange ={(e) => this.handleChange(e)}/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Priority Level: </label>
+            <label >Priority Level: </label>
             <input type="text" name="priority" value={this.state.priority || ''} placeholder={task.priority} onChange={(e) => this.handleChange(e)}/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Completion Status: </label>
+            <label >Completion Status: </label>
             <input type="text" name="isComplete" value={this.state.isComplete || ''} placeholder={task.isComplete} onChange={(e) => this.handleChange(e)}/>
             <br/>
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Employee ID: </label>
+            <label >Employee ID: </label>
             <input type="text" name="employeeId" value={this.state.employeeId || ''} placeholder={task.employeeId} onChange={(e) => this.handleChange(e)}/>
             <br/>
 
@@ -168,7 +168,7 @@ class EditTaskContainer extends Component {
             <Link to={`/employee/${task.employeeId}`}>{task.employee.firstname}</Link>
             <button onClick={async () => {await editTask({id:task.id, employeeId: null});  fetchTask(task.id)}}>Unassign</button>
             </div>
-            : <div> No employee currently assigned </div>
+            : <div className='element'> No employee currently assigned </div>
           }
 
           <div className='element'> Other employees

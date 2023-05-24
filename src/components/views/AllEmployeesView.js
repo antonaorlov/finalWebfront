@@ -5,10 +5,13 @@ const AllEmployeesView = (props) => {
   let { deleteEmployee } = props; 
   if (!props.allEmployees.length) {
     return (
-      <div style={{backgroundColor:"#7A3E3E",color:"#EEEEEE",fontFamily:"courier",margin:0,padding:80}}>
-        <p>There are no employees.</p> 
+      <div>
+        <p className='element'>There are no employees.</p> 
           <Link to={'/newemployee'}>
-            <button>Add New Employee</button>
+            <button>
+            <span className="transition"></span>
+            <span className="gradient"></span>
+              Add New Employee</button>
             </Link> 
       </div> 
 
@@ -16,12 +19,12 @@ const AllEmployeesView = (props) => {
   }
 
   return (
-    <div style={{backgroundColor:"#7A3E3E",color:"#EEEEEE",fontFamily:"courier",margin:0,padding:80}}>
+    <div >
       
       {props.allEmployees.map((employee) => {
         let name = employee.firstname + " " + employee.lastname;
         return (
-          <div style={{backgroundColor:"#7A3E3E",color:"#EEEEEE",fontFamily:"courier",margin:0,padding:80}} key={employee.id}>
+          <div key={employee.id}>
           <Link to={`/employee/${employee.id}`}>
             <h1>{name}</h1>
           </Link>
@@ -31,8 +34,12 @@ const AllEmployeesView = (props) => {
         );
 
       })}
+      <br></br>
       <Link to={'/newemployee'}>
-        <button>Add New Employee</button>
+        <button>
+        <span className="transition"></span>
+            <span className="gradient"></span>
+          Add New Employee</button>
       </Link>
     </div>
   );

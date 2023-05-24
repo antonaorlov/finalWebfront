@@ -4,8 +4,8 @@ const AllTasksView = (props) => {
   let {tasks, deleteTask} = props;
   if (!tasks.length) {
     return (
-    <div style={{backgroundColor:"#47A992",color:"#482121",fontFamily:"courier",margin:0,padding:50}}>
-      <p>There are no tasks.</p>
+    <div>
+      <p className='element'>There are no tasks.</p>
       <Link to={`/newtask`}>
         <button>Add New Task</button>
       </Link>
@@ -14,7 +14,7 @@ const AllTasksView = (props) => {
   }
   
   return (
-    <div style={{backgroundColor:"#47A992",color:"#482121",fontFamily:"courier",margin:0,padding:50}}>
+    <div >
       {tasks.map((task) => {
         let description = task.description;
         return (
@@ -22,13 +22,20 @@ const AllTasksView = (props) => {
           <Link to={`/task/${task.id}`}>
             <h1>{description}</h1>
           </Link>
-          <button onClick={() => deleteTask(task.id)}>Delete</button>
+          <button onClick={() => deleteTask(task.id)}>
+          <span class="transition"></span>
+            <span class="gradient"></span>
+            Delete</button>
           </div>
         );
       }
       )}
+      <br></br>
       <Link to={`/newtask`}>
-        <button>Add New Task</button>
+        <button>
+        <span class="transition"></span>
+            <span class="gradient"></span>
+          Add New Task</button>
       </Link>
     </div>
   );
