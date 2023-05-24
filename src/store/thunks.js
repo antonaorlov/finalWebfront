@@ -6,22 +6,48 @@ let path = "http://localhost:5001/api";
 
 // THUNKS
 
-//All Employers
-export const fetchAllEmployersThunk = () => async (dispatch) => {
+//All employees
+export const fetchAllEmployeesThunk = () => async (dispatch) => {
   try {
-    let res = await axios.get(`${path}/Employers`);
-    dispatch(ac.fetchAllEmployers(res.data));
+    let res = await axios.get(`${path}/employees`);
+    dispatch(ac.fetchAllEmployees(res.data));
   } catch(err) {
     console.error(err);
   }
 };
 
-//Single Employer
-export const fetchEmployerThunk = (id) => async (dispatch) => {
+//Single employee
+export const fetchEmployeeThunk = (id) => async (dispatch) => {
+  // thunk creator would not an be async function 
+  // if using Promise.then:
+  // return axios
+  //   .get(`${path}/api/employees/${id}`)
+  //   .then((res) => res.data)
+  //   .then((employee) => dispatch(ac.fetchEmployee(employee)))
+  //   .catch((err) => console.log(err));
   try {
-    let res = await axios.get(`${path}/Employers/${id}`);
-    dispatch(ac.fetchEmployers(res.data));
+    let res = await axios.get(`${path}/employees/${id}`);
+    dispatch(ac.fetchEmployee(res.data));
   } catch(err) {
+    console.error(err);
+  }
+};
+
+export const deleteEmployeeThunk = (employeeId) => async (dispatch) => {
+  try {
+    await axios.delete(`${path}/employees/${employeeId}`);
+    dispatch(ac.deleteEmployee(employeeId));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const addEmployeeThunk = (employee) => async (dispatch) => {
+  try {
+    let res = await axios.post(`${path}/employees`, employee);
+    dispatch(ac.addEmployee(res.data));
+    return res.data;
+  } catch (err) {
     console.error(err);
   }
 };
@@ -59,14 +85,14 @@ export const deleteTaskThunk = taskId => async dispatch => {
 export const editTaskThunk = task => async dispatch => {
   try {
     let res = await axios.put(`${path}/tasks/${task.id}`, task);
-    //res.data is the updated course object
+    //res.data is the updated task object
     dispatch(ac.editTask(res.data));
   } catch(err) {
     console.error(err);
   }
 };
 
-//Single Task
+//Single task
 export const fetchTaskThunk = id => async dispatch => {
   try {
     let res = await axios.get(`${path}/tasks/${id}`);

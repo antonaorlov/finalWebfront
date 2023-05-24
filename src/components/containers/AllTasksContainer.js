@@ -21,7 +21,7 @@ class AllTasksContainer extends Component {
                   deleteTask={this.props.deleteTask}   
                 />
             </div>
-        )
+        );
     }
 }
 

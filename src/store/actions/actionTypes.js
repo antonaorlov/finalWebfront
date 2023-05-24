@@ -1,19 +1,18 @@
 // ACTION TYPES;
 
-//All Employers
-export const FETCH_ALL_EMPLOYERS = "FETCH_ALL_EMPLOYERS";
+//All campuses
+export const FETCH_ALL_EMPLOYEES = "FETCH_ALL_EMPLOYEES";
 
-//Single employer
-export const FETCH_EMPLOYER = "FETCH_EMPLOYER";
-export const ADD_EMPLOYER = "ADD_EMPLOYER";
-export const DELETE_EMPLOYER = "DELETE_EMPLOYER";
-export const EDIT_EMPLOYER = "EDIT_EMPLOYER";
+//Single campus
+export const FETCH_EMPLOYEE = "FETCH_EMPLOYEE";
+export const ADD_EMPLOYEE = "ADD_EMPLOYEE";
+export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE";
 
-//All tasks
+//All students
 export const FETCH_ALL_TASKS = "FETCH_ALL_TASKS";
 export const ADD_TASK = "ADD_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const EDIT_TASK = "EDIT_TASK";
 
-//Single task
+//Single student
 export const FETCH_TASK = "FETCH_TASK";
